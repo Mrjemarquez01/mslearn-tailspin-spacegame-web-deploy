@@ -114,6 +114,7 @@ stages:
       pool:
         vmImage: ubuntu-20.04
       variables:
+      dotnetSdkVersion: 5.x
       - group: Release
       steps:
       - task: UseDotNet@2
