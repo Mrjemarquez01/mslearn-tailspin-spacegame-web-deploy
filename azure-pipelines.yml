@@ -91,31 +91,7 @@ stages:
   displayName: 'Deploy to the test environment'
   dependsOn: Dev
   jobs:
-  - job: RunUITests
-      displayName: Run UI tests
-      pool:
-        vmImage: ubuntu-20.04
-      variables:
-      dotnetSdkVersion: 5.x
-      - group: Release
-      steps:
-      - task: UseDotNet@2
-        displayName: Use .NET SDK $(dotnetSdkVersion)
-        inputs:
-          version: $(dotnetSdkVersion)
-      - task: DotNetCoreCLI@2
-        displayName: Build the project - $(buildConfiguration)
-        inputs:
-          command: build
-          arguments: --configuration $(buildConfiguration)
-          projects: $(System.DefaultWorkingDirectory)/**/*UITests.csproj
-      - task: DotNetCoreCLI@2
-        displayName: Run unit tests - $(buildConfiguration)
-        inputs:
-          command: test
-          arguments: --no-build --configuration $(buildConfiguration)
-          publishTestResults: true
-          projects: $(System.DefaultWorkingDirectory)/**/*UITests.csproj
+  
   - deployment: Deploy
     pool:
       vmImage: 'ubuntu-20.04'
