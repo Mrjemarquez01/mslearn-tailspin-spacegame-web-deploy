@@ -38,7 +38,7 @@ namespace UITests
                     break;
                   case "Edge":
                     driver = new EdgeDriver(
-                        Environment.GetEnvironmentVariable("EdgeWebDriver"),
+                        Environment.GetEnvironmentVariable("MsEdgeDriver"),
                         new EdgeOptions
                         {
                             UseChromium = true
